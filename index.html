@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <title>Append to Text File</title>
+
+  </head>
+
+  <body>
+
+    <input type="text" id="inputField" placeholder="Enter text to append" />
+
+    <button onclick="appendToFile()">Append to File</button>
+    
+    <script>
+    function appendToFile() {
+
+  const inputField = document.getElementById("inputField");
+
+  const textToAppend = inputField.value + "\n";
+
+  const fileName = "records.txt";
+
+  const file = new File([textToAppend], fileName, { type: "text/plain" });
+
+  const writer = new FileWriter();
+
+  writer.onerror = function () {
+
+    console.error("Failed to append to file: " + writer.error);
+
+  };
+
+  writer.write(file);
+
+}
+    
+    </script>
+
+  </body>
+
+</html>
+
